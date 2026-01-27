@@ -1,6 +1,7 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+// Normalize path: remove leading and trailing slashes to handle "/about" and "/about/" equally
+const currentPath = pathname.replace(/^\/|\/$/g, '');
 ---
 
 <header class="site-header">
