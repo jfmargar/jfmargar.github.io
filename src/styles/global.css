@@ -80,14 +80,22 @@ img {
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
   gap: 1.5rem;
+  /* Glass styles moved to .nav-bg to avoid containment block issues */
+  width: min(100%, 600px);
+  margin: 0 1rem;
+  position: relative; /* Context for absolute bg */
+}
+
+.nav-bg {
+  position: absolute;
+  inset: 0;
   background: rgba(15, 17, 21, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   border-radius: 999px;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-  width: min(100%, 600px);
-  margin: 0 1rem;
+  z-index: -1;
 }
 
 .logo {
@@ -656,6 +664,19 @@ img {
 }
 
 @media (max-width: 860px) {
+  body {
+    padding-bottom: 5rem; /* Make space for fixed bottom nav */
+  }
+
+  .site-header {
+    top: 0;
+    margin-top: 0;
+  }
+  
+  .nav-wrap {
+    flex-wrap: nowrap; /* Prevent vertical stacking */
+  }
+
   .nav {
     display: flex;
     position: fixed;
@@ -692,7 +713,9 @@ img {
   }
 
   .nav-wrap {
-    padding: 1rem 0;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    margin: 0;
   }
 
   .project-header {
@@ -714,5 +737,10 @@ img {
   .button {
     width: 100%;
     justify-content: center;
+  }
+  
+  /* Prevent header button from expanding */
+  .site-header .button {
+    width: auto;
   }
 }
