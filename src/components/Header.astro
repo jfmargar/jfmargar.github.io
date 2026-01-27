@@ -1,0 +1,18 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<header class="site-header">
+	<div class="container nav-wrap">
+		<a class="logo" href="/">
+			<img src="/images/perfil.jpg" alt="Foto de Julián Marqués García" />
+		</a>
+		<nav class="nav">
+			<a class={currentPath === "" ? "active" : ""} href="/">Inicio</a>
+			<a class={currentPath === "about" ? "active" : ""} href="/about">Sobre mí</a>
+			<a class={currentPath === "projects" ? "active" : ""} href="/projects">Proyectos</a>
+		</nav>
+		<a class="button small" href="mailto:julian.mg.mobileapps@icloud.com">Contactar</a>
+	</div>
+</header>
