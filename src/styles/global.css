@@ -576,6 +576,18 @@ img {
   align-items: center;
 }
 
+.project-web-link {
+  margin-left: 0.5rem;
+  color: var(--accent);
+  font-size: 0.72em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.project-web-link:hover {
+  color: var(--text);
+}
+
 .project-icon {
   width: 88px;
   height: 88px;
